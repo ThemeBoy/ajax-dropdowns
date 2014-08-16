@@ -357,14 +357,7 @@ class AJAX_Dropdowns {
 		elseif ( 'redirect' == $method ):
 			$script = '$("#ajaxd-select-' . $id . '").change(function(){window.location="' . add_query_arg( 'ajax_post', '', remove_query_arg( 'ajax_post', get_permalink() ) ) . '="+$(this).val();});';
 		else:
-			$script = '$("#ajaxd-select-' . $id . '").change(function(){$.post("' . admin_url('admin-ajax.php') . '",
-			{
-				"action":"ajax_dropdown",
-				"security":"' . wp_create_nonce( 'ajax-dropdown' ) . '",
-				"post_id":$(this).val()
-			},function(response){
-				if(response!=0){$("#ajaxd-posts-' . $id . '").html(response)};
-			});});';
+			$script = '$("#ajaxd-select-' . $id . '").change(function(){$.post("' . admin_url('admin-ajax.php') . '",{"action":"ajax_dropdown","post_id":$(this).val()},function(response){if(response!=0){$("#ajaxd-posts-' . $id . '").html(response)};});});';
 		endif;
 
 		// Get global $wp_query and hold onto original queried object
@@ -401,9 +394,6 @@ class AJAX_Dropdowns {
 	 * AJAX Callback
 	 */
 	public static function ajax_callback() {
-
-		// Check for nonce
-		check_ajax_referer( 'ajax-dropdown', 'security' );
 
 		// Return if no id is given
 		if ( ! isset( $_POST['post_id'] ) ) return false;
