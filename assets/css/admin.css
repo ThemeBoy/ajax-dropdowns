@@ -1,0 +1,10 @@
+.ajaxd-posts-table tr {
+	background-color: #fff;
+}
+.ajaxd-posts-table tr:nth-child(2n),
+.ajaxd-posts-table tr.ajaxd-placeholder {
+	background-color: #f9f9f9;
+}
+.ajaxd-posts-table tr {
+	cursor: move;
+}
