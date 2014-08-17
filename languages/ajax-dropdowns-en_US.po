@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AJAX Dropdowns\n"
-"POT-Creation-Date: 2014-08-16 18:22+1000\n"
-"PO-Revision-Date: 2014-08-16 18:23+1000\n"
+"POT-Creation-Date: 2014-08-17 21:56+1000\n"
+"PO-Revision-Date: 2014-08-17 21:56+1000\n"
 "Last-Translator: ThemeBoy <support@themeboy.com>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 
 #: ajax-dropdowns.php:261
-msgid "AJAX"
+msgid "Ajax"
 msgstr ""
 
 #: ajax-dropdowns.php:261

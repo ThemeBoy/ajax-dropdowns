@@ -1,4 +1,4 @@
-AJAX Dropdowns
+Ajax Dropdowns
 
 Copyright 2014 by the contributors
 
@@ -29,7 +29,7 @@ and
 
   ThemeBoy
 
-  AJAX Dropdowns is released under the GPL
+  Ajax Dropdowns is released under the GPL
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 

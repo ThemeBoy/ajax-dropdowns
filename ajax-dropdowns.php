@@ -1,10 +1,10 @@
 <?php
 /**
- * @package AJAX_Dropdowns
+ * @package Ajax_Dropdowns
  * @version 0.9
  */
 /*
-Plugin Name: AJAX Dropdowns
+Plugin Name: Ajax Dropdowns
 Plugin URI: http://wordpress.org/plugins/ajax-dropdowns/
 Description: Display a group of posts that can be switched using dropdowns.
 Author: ThemeBoy
@@ -20,10 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 0.9
 */
-class AJAX_Dropdowns {
+class Ajax_Dropdowns {
 
 	/**
-	 * AJAX Dropdowns Constructor.
+	 * Ajax Dropdowns Constructor.
 	 * @access public
 	 */
 	public function __construct() {
@@ -258,7 +258,7 @@ class AJAX_Dropdowns {
 	public static function method_meta_box( $post, $args ) {
 		wp_nonce_field( 'ajaxd_save_data', 'ajaxd_meta_nonce' );
 		$method = get_post_meta( $post->ID, 'ajaxd_method', true );
-		$method_options = array( 'ajax' => __( 'AJAX', 'ajaxd' ), 'inline' => __( 'Inline', 'ajaxd' ), 'redirect' => __( 'Redirect', 'ajaxd' ) );
+		$method_options = array( 'ajax' => __( 'Ajax', 'ajaxd' ), 'inline' => __( 'Inline', 'ajaxd' ), 'redirect' => __( 'Redirect', 'ajaxd' ) );
 		?>
 		<p class="howto">
 			<?php _e( 'Select the method to query posts.', 'ajaxd' ); ?>
@@ -391,7 +391,7 @@ class AJAX_Dropdowns {
 	}
 
 	/**
-	 * AJAX Callback
+	 * Ajax Callback
 	 */
 	public static function ajax_callback() {
 
@@ -428,4 +428,4 @@ class AJAX_Dropdowns {
 
 }
 
-new AJAX_Dropdowns();
+new Ajax_Dropdowns();
