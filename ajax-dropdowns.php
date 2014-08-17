@@ -1,14 +1,14 @@
 <?php
 /**
  * @package AJAX_Dropdowns
- * @version 1.0
+ * @version 0.9
  */
 /*
 Plugin Name: AJAX Dropdowns
 Plugin URI: http://wordpress.org/plugins/ajax-dropdowns/
 Description: Display a group of posts that can be switched using dropdowns.
 Author: ThemeBoy
-Version: 1.0
+Version: 0.9
 Author URI: http://themeboy.com/
 */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Plugin setup
  *
- * @since 1.0
+ * @since 0.9
 */
 class AJAX_Dropdowns {
 
@@ -51,7 +51,7 @@ class AJAX_Dropdowns {
 	*/
 	private function define_constants() {
 		if ( !defined( 'AJAX_DROPDOWNS_VERSION' ) )
-			define( 'AJAX_DROPDOWNS_VERSION', '1.0' );
+			define( 'AJAX_DROPDOWNS_VERSION', '0.9' );
 
 		if ( !defined( 'AJAX_DROPDOWNS_URL' ) )
 			define( 'AJAX_DROPDOWNS_URL', plugin_dir_url( __FILE__ ) );

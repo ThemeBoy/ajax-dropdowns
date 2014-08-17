@@ -3,7 +3,7 @@ Contributors: ThemeBoy
 Tags: ajax, dropdowns, option, posts, pages, custom post types, tabs, groups, redirect, inline
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 0.9
 License: GPLv2 or later
 
 Display a group of posts that can be switched using dropdowns.
@@ -39,5 +39,5 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Changelog ==
 
-= 1.0 =
-* Initial release.
+= 0.9 =
+* Beta release.
