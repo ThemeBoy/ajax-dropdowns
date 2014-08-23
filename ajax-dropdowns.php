@@ -198,7 +198,7 @@ class Ajax_Dropdowns {
 						<optgroup label="<?php echo $object->labels->name; ?> (<?php echo sizeof( $posts ); ?>)">
 							<?php
 							foreach ( $posts as $post ):
-								printf( '<option value="%s" data-post-type="%s" %s>%s</option>', $post->ID, $object->labels->singular_name, in_array( $post->ID, $selected ) ? 'selected' : '', $post->post_title );
+								printf( '<option value="%s" data-post-type="%s">%s</option>', $post->ID, $object->labels->singular_name, $post->post_title );
 							endforeach;
 							?>
 						</optgroup>
