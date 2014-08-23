@@ -192,7 +192,7 @@ class Ajax_Dropdowns {
 				foreach ( $post_types as $post_type ):
 					if ( 'attachment' == $post_type ) continue;
 					$object = get_post_type_object( $post_type );
-					$posts = get_posts( array( 'post_type' => $post_type, 'posts_per_page' => -1 ) );
+					$posts = get_posts( array( 'post_type' => $post_type, 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC' ) );
 					if ( $posts && is_array( $posts ) ):
 						?>
 						<optgroup label="<?php echo $object->labels->name; ?> (<?php echo sizeof( $posts ); ?>)">
