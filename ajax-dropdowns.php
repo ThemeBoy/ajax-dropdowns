@@ -88,7 +88,7 @@ class Ajax_Dropdowns {
 	 */
 	public function action_links( $links ) {
 		return array_merge( array(
-			'<a href="' . admin_url( 'edit.php?post_type=ajax_dropdown' ) . '">' . __( 'Manage', 'sportspress' ) . '</a>',
+			'<a href="' . admin_url( 'edit.php?post_type=ajax_dropdown' ) . '">' . __( 'Manage', 'ajaxd' ) . '</a>',
 		), $links );
 	}
 
@@ -120,8 +120,8 @@ class Ajax_Dropdowns {
 				'supports' 				=> array( 'title' ),
 				'has_archive' 			=> false,
 				'show_in_nav_menus' 	=> false,
-				'show_in_menu' 			=> 'edit.php',
 				'show_in_admin_bar' 	=> false,
+				'menu_icon' 			=> 'dashicons-randomize',
 			)
 		);
 	}
@@ -192,7 +192,7 @@ class Ajax_Dropdowns {
 				foreach ( $post_types as $post_type ):
 					if ( 'attachment' == $post_type ) continue;
 					$object = get_post_type_object( $post_type );
-					$posts = get_posts( array( 'post_type' => $post_type ) );
+					$posts = get_posts( array( 'post_type' => $post_type, 'posts_per_page' => -1 ) );
 					if ( $posts ):
 						?>
 						<optgroup label="<?php echo $object->labels->name; ?>">
@@ -236,6 +236,11 @@ class Ajax_Dropdowns {
 		</table>
 		<p class="howto">
 			<?php _e( 'Drag and drop to reorder posts.', 'ajaxd' ); ?>
+		</p>
+		<p>
+			<a href="http://wordpress.org/support/view/plugin-reviews/ajax-dropdowns?rate=5#postform">
+				<?php _e( 'Love Ajax Dropdowns? Help spread the word by rating us 5★ on WordPress.org', 'ajaxd' ); ?>
+			</a>
 		</p>
 		<?php
 	}
