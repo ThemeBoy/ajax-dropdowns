@@ -193,9 +193,9 @@ class Ajax_Dropdowns {
 					if ( 'attachment' == $post_type ) continue;
 					$object = get_post_type_object( $post_type );
 					$posts = get_posts( array( 'post_type' => $post_type, 'posts_per_page' => -1 ) );
-					if ( $posts ):
+					if ( $posts && is_array( $posts ) ):
 						?>
-						<optgroup label="<?php echo $object->labels->name; ?>">
+						<optgroup label="<?php echo $object->labels->name; ?> (<?php echo sizeof( $posts ); ?>)">
 							<?php
 							foreach ( $posts as $post ):
 								printf( '<option value="%s" data-post-type="%s" %s>%s</option>', $post->ID, $object->labels->singular_name, in_array( $post->ID, $selected ) ? 'selected' : '', $post->post_title );
