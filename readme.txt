@@ -3,7 +3,7 @@ Contributors: ThemeBoy, brianmiyaji
 Tags: ajax, dropdowns, option, posts, pages, custom post types, tabs, groups, redirect, inline
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 0.9.4
+Stable tag: 0.9.5
 License: GPLv2 or later
 
 Display a group of posts that can be switched using dropdowns.
@@ -61,6 +61,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 6. A dropdown is displayed on the frontend to swap the content below it.
 
 == Changelog ==
+
+= 0.9.5 =
+* Feature - Add no content option to display dropdown only in redirect mode.
 
 = 0.9.4 =
 * Feature - Enable bulk adding all posts of a post type.
