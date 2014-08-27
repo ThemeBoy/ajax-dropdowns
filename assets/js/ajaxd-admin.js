@@ -46,4 +46,10 @@ jQuery(document).ready(function($){
 		$table = $(".ajaxd-posts-table");
 		if ( $table.find(" > tbody tr:visible").length == 0 ) $table.find(" > tbody tr.ajaxd-placeholder").show();
 	});
+
+	// Hide or show no content option when method is changed
+	$(".ajaxd-method").change(function() {
+		if ( $(this).val() == "redirect" ) $(".ajaxd-no-content-option").show();
+		else $(".ajaxd-no-content-option").hide();
+	}).trigger("change");
 });

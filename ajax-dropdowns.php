@@ -197,7 +197,7 @@ class Ajax_Dropdowns {
 						?>
 						<optgroup label="<?php echo $object->labels->name; ?>">
 							<?php
-							printf( '<option value="%s" data-post-type="%s">%s</option>', 0, $object->labels->singular_name, sprintf( __( '&mdash; Add all %1$s (%2$s) &mdash;', 'ajaxd' ), $object->labels->name, sizeof( $posts ) ) );
+							printf( '<option value="%s" data-post-type="%s">%s</option>', 0, $object->labels->singular_name, sprintf( __( '&mdash; Add All %1$s (%2$s) &mdash;', 'ajaxd' ), $object->labels->name, sizeof( $posts ) ) );
 							foreach ( $posts as $post ):
 								printf( '<option value="%s" data-post-type="%s">%s</option>', $post->ID, $object->labels->singular_name, $post->post_title );
 							endforeach;
@@ -264,6 +264,7 @@ class Ajax_Dropdowns {
 	public static function method_meta_box( $post, $args ) {
 		wp_nonce_field( 'ajaxd_save_data', 'ajaxd_meta_nonce' );
 		$method = get_post_meta( $post->ID, 'ajaxd_method', true );
+		$no_content = get_post_meta( $post->ID, 'ajaxd_no_content', true ) == 'yes' ? true : false;
 		$method_options = array( 'ajax' => __( 'Ajax', 'ajaxd' ), 'inline' => __( 'Inline', 'ajaxd' ), 'parameter' => __( 'URL Parameter', 'ajaxd' ), 'redirect' => __( 'Redirect', 'ajaxd' ) );
 		?>
 		<p class="howto">
@@ -277,6 +278,13 @@ class Ajax_Dropdowns {
 				endforeach;
 				?>
 			</select>
+		</p>
+		<p class="ajaxd-no-content-option">
+			<label>
+				<input type="hidden" name="ajaxd_no_content" value="no">
+				<input type="checkbox" name="ajaxd_no_content" class="ajaxd-no-content" value="yes" <?php checked( $no_content ); ?>>
+				<?php _e( 'Dropdown only (no content)', 'ajaxd' ); ?>
+			</label>
 		</p>
 		<?php
 	}
@@ -306,6 +314,10 @@ class Ajax_Dropdowns {
 		update_post_meta( $post_id, 'ajaxd_layout', 'dropdown' );
 		if ( isset( $_POST['ajaxd_method'] ) )
 			update_post_meta( $post_id, 'ajaxd_method', $_POST['ajaxd_method'] );
+		if ( isset( $_POST['ajaxd_method'] ) && 'redirect' == $_POST['ajaxd_method'] && isset( $_POST['ajaxd_no_content'] ) )
+			update_post_meta( $post_id, 'ajaxd_no_content', $_POST['ajaxd_no_content'] );
+		else
+			update_post_meta( $post_id, 'ajaxd_no_content', 'no' );
 	}
 
 	/**
@@ -343,8 +355,9 @@ class Ajax_Dropdowns {
 		else
 			$current = reset( $include );
 
-		// Get method
+		// Get method and no content option
 		$method = get_post_meta( $id, 'ajaxd_method', true );
+		$no_content = get_post_meta( $id, 'ajaxd_no_content', true );
 
 		/**
 		 * Select options
@@ -368,31 +381,36 @@ class Ajax_Dropdowns {
 			$script = '$("#ajaxd-select-' . $id . '").change(function(){$.post("' . admin_url('admin-ajax.php') . '",{"action":"ajax_dropdown","post_id":$(this).val()},function(response){if(response!=0){$("#ajaxd-posts-' . $id . '").html(response)};});});';
 		endif;
 
-		// Get global $wp_query and hold onto original queried object
-		global $wp_query;
-		$queried_object = $wp_query->queried_object;
+		// Skip if no content
+		if ( 'yes' == $no_content ):
+			$content = '';
+		else:
+			// Get global $wp_query and hold onto original queried object
+			global $wp_query;
+			$queried_object = $wp_query->queried_object;
 
-		// Limit posts to current if not inline
-		if ( 'inline' != $method ):
-			$include = array( $current );
+			// Limit posts to current if not inline
+			if ( 'inline' != $method ):
+				$include = array( $current );
+			endif;
+
+			// Loop through posts
+			$content = '<div class="ajaxd-posts" id="ajaxd-posts-' . $id . '">';
+			foreach ( $include as $post_id ):
+				$query = new WP_Query( array( 'p' => $post_id, 'post_type' => 'any' ) );
+				if ( ! $query->have_posts() ) continue;
+				while ( $query->have_posts() ): $query->the_post();
+					global $post;
+					$wp_query->queried_object = $post;
+					$content .= '<div class="ajaxd-post" id="ajaxd-post-' . $post_id . '"' . ( $current == $post_id ? '' : ' style="display:none;"' ) . '>' . apply_filters( 'the_content', get_the_content() ) . '</div>';
+				endwhile;
+			endforeach;
+			wp_reset_postdata();
+			$content .= '</div><!-- .ajaxd-posts -->';
+
+			// Restore original queried object
+			$wp_query->queried_object = $queried_object;
 		endif;
-
-		// Loop through posts
-		$content = '<div class="ajaxd-posts" id="ajaxd-posts-' . $id . '">';
-		foreach ( $include as $post_id ):
-			$query = new WP_Query( array( 'p' => $post_id, 'post_type' => 'any' ) );
-			if ( ! $query->have_posts() ) continue;
-			while ( $query->have_posts() ): $query->the_post();
-				global $post;
-				$wp_query->queried_object = $post;
-				$content .= '<div class="ajaxd-post" id="ajaxd-post-' . $post_id . '"' . ( $current == $post_id ? '' : ' style="display:none;"' ) . '>' . apply_filters( 'the_content', get_the_content() ) . '</div>';
-			endwhile;
-		endforeach;
-		wp_reset_postdata();
-		$content .= '</div><!-- .ajaxd-posts -->';
-
-		// Restore original queried object
-		$wp_query->queried_object = $queried_object;
 
 		// Return output
 		return $select . $content . '<script type="text/javascript">(function($) {' . $script . '})(jQuery);</script>';
