@@ -8,16 +8,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AJAX Dropdowns\n"
-"POT-Creation-Date: 2014-08-17 21:56+1000\n"
-"PO-Revision-Date: 2014-08-17 21:56+1000\n"
-"Last-Translator: ThemeBoy <support@themeboy.com>\n"
+"POT-Creation-Date: 2015-02-13 21:00+1000\n"
+"PO-Revision-Date: 2015-02-13 21:00+1000\n"
+"Last-Translator: Brian Miyaji <brian@themeboy.com>\n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -29,40 +29,16 @@ msgstr ""
 msgid "Manage"
 msgstr ""
 
-#: ajax-dropdowns.php:102
-msgid "Dropdowns"
-msgstr ""
-
-#: ajax-dropdowns.php:103
-msgid "Dropdown"
-msgstr ""
-
-#: ajax-dropdowns.php:104
-msgid "Add New Dropdown"
-msgstr ""
-
-#: ajax-dropdowns.php:105
-msgid "Edit Dropdown"
-msgstr ""
-
-#: ajax-dropdowns.php:106
-msgid "New Dropdown"
-msgstr ""
-
-#: ajax-dropdowns.php:107
-msgid "View Dropdown"
-msgstr ""
-
-#: ajax-dropdowns.php:108
-msgid "Search Dropdowns"
+#: ajax-dropdowns.php:110
+msgid "No dropdowns found in trash."
 msgstr ""
 
 #: ajax-dropdowns.php:109
 msgid "No dropdowns found."
 msgstr ""
 
-#: ajax-dropdowns.php:110
-msgid "No dropdowns found in trash."
+#: ajax-dropdowns.php:108
+msgid "Search Dropdowns"
 msgstr ""
 
 #: ajax-dropdowns.php:176
@@ -77,53 +53,95 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: ajax-dropdowns.php:189
-msgid "Add a post to this dropdown"
+#: ajax-dropdowns.php:200
+#, fuzzy, php-format
+msgid "&mdash; Add All %1$s (%2$s) &mdash;"
+msgstr "&mdash; 追加 &mdash;"
+
+#: ajax-dropdowns.php:268
+msgid "Redirect"
 msgstr ""
 
-#: ajax-dropdowns.php:215
-msgid "Title"
+#: ajax-dropdowns.php:331
+msgid "Settings saved."
 msgstr ""
 
-#: ajax-dropdowns.php:216
-msgid "Post Type"
+#: ajax-dropdowns.php:286
+msgid "Dropdown only (no content)"
 msgstr ""
 
-#: ajax-dropdowns.php:223
-msgid "No posts found."
+#: ajax-dropdowns.php:271
+msgid "Select the method to query posts."
 msgstr ""
 
-#: ajax-dropdowns.php:224
-msgid "Use the menu above to add a post to this dropdown."
+#: ajax-dropdowns.php:268
+msgid "URL Parameter"
 msgstr ""
 
-#: ajax-dropdowns.php:238
-msgid "Drag and drop to reorder posts."
+#: ajax-dropdowns.php:268
+msgid "Inline"
 msgstr ""
 
-#: ajax-dropdowns.php:249
+#: ajax-dropdowns.php:268
+msgid "Ajax"
+msgstr ""
+
+#: ajax-dropdowns.php:255
 msgid ""
 "Copy this code and paste it into your post, page or text widget content."
 msgstr ""
 
-#: ajax-dropdowns.php:261
-msgid "Ajax"
+#: ajax-dropdowns.php:243
+msgid ""
+"Love Ajax Dropdowns? Help spread the word by rating us 5★ on WordPress.org"
 msgstr ""
 
-#: ajax-dropdowns.php:261
-msgid "Inline"
+#: ajax-dropdowns.php:239
+msgid "Drag and drop to reorder posts."
 msgstr ""
 
-#: ajax-dropdowns.php:261
-msgid "Redirect"
+#: ajax-dropdowns.php:225
+msgid "Use the menu above to add a post to this dropdown."
 msgstr ""
 
-#: ajax-dropdowns.php:264
-msgid "Select the method to query posts."
+#: ajax-dropdowns.php:224
+msgid "No posts found."
 msgstr ""
 
-#: ajax-dropdowns.php:313
-msgid "Settings saved."
+#: ajax-dropdowns.php:217
+msgid "Post Type"
+msgstr ""
+
+#: ajax-dropdowns.php:216
+msgid "Title"
+msgstr ""
+
+#: ajax-dropdowns.php:189
+msgid "Add a post to this dropdown"
+msgstr ""
+
+#: ajax-dropdowns.php:107
+msgid "View Dropdown"
+msgstr ""
+
+#: ajax-dropdowns.php:106
+msgid "New Dropdown"
+msgstr ""
+
+#: ajax-dropdowns.php:105
+msgid "Edit Dropdown"
+msgstr ""
+
+#: ajax-dropdowns.php:104
+msgid "Add New Dropdown"
+msgstr ""
+
+#: ajax-dropdowns.php:103
+msgid "Dropdown"
+msgstr ""
+
+#: ajax-dropdowns.php:102
+msgid "Dropdowns"
 msgstr ""
 
 #~ msgid "Show this plugin"
@@ -1657,9 +1675,6 @@ msgstr ""
 #~ msgctxt "calendar caption"
 #~ msgid "%1$s %2$s"
 #~ msgstr "%2$s年%1$s"
-
-#~ msgid "&mdash; Add &mdash;"
-#~ msgstr "&mdash; 追加 &mdash;"
 
 #~ msgid "MySQL Version"
 #~ msgstr "MySQL バージョン"
