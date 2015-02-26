@@ -74,7 +74,7 @@ class Ajax_Dropdowns {
 	 * Note: the first-loaded translation file overrides any following ones if the same translation is present
 	 */
 	public static function load_plugin_textdomain() {
-		$locale = apply_filters( 'plugin_locale', get_locale(), ajax-dropdowns;
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'ajax-dropdowns' );
 
 		// Global + Frontend Locale
 		load_plugin_textdomain( 'ajax-dropdowns', false, plugin_basename( dirname( __FILE__ ) . "/languages" ) );
@@ -88,7 +88,7 @@ class Ajax_Dropdowns {
 	 */
 	public function action_links( $links ) {
 		return array_merge( array(
-			'<a href="' . admin_url( 'edit.php?post_type=ajax_dropdown' ) . '">' . __( 'Manage', ajax-dropdowns . '</a>',
+			'<a href="' . admin_url( 'edit.php?post_type=ajax_dropdown' ) . '">' . __( 'Manage', 'ajax-dropdowns' ) . '</a>',
 		), $links );
 	}
 
@@ -99,15 +99,15 @@ class Ajax_Dropdowns {
 		register_post_type( 'ajax_dropdown',
 			array(
 				'labels' => array(
-					'name' 					=> __( 'Dropdowns', ajax-dropdowns,
-					'singular_name' 		=> __( 'Dropdown', ajax-dropdowns,
-					'add_new_item' 			=> __( 'Add New Dropdown', ajax-dropdowns,
-					'edit_item' 			=> __( 'Edit Dropdown', ajax-dropdowns,
-					'new_item' 				=> __( 'New Dropdown', ajax-dropdowns,
-					'view_item' 			=> __( 'View Dropdown', ajax-dropdowns,
-					'search_items' 			=> __( 'Search Dropdowns', ajax-dropdowns,
-					'not_found' 			=> __( 'No dropdowns found.', ajax-dropdowns,
-					'not_found_in_trash' 	=> __( 'No dropdowns found in trash.', ajax-dropdowns,
+					'name' 					=> __( 'Dropdowns', 'ajax-dropdowns' ),
+					'singular_name' 		=> __( 'Dropdown', 'ajax-dropdowns' ),
+					'add_new_item' 			=> __( 'Add New Dropdown', 'ajax-dropdowns' ),
+					'edit_item' 			=> __( 'Edit Dropdown', 'ajax-dropdowns' ),
+					'new_item' 				=> __( 'New Dropdown', 'ajax-dropdowns' ),
+					'view_item' 			=> __( 'View Dropdown', 'ajax-dropdowns' ),
+					'search_items' 			=> __( 'Search Dropdowns', 'ajax-dropdowns' ),
+					'not_found' 			=> __( 'No dropdowns found.', 'ajax-dropdowns' ),
+					'not_found_in_trash' 	=> __( 'No dropdowns found in trash.', 'ajax-dropdowns' ),
 				),
 				'public' 				=> false,
 				'show_ui' 				=> true,
@@ -174,9 +174,9 @@ class Ajax_Dropdowns {
 	 * Add meta boxes
 	 */
 	public function add_meta_boxes() {
-		add_meta_box( 'ajaxd_postsdiv', __( 'Posts', ajax-dropdowns, array( $this, 'posts_meta_box' ), 'ajax_dropdown', 'advanced', 'high' );
-		add_meta_box( 'ajaxd_methoddiv', __( 'Method', ajax-dropdowns, array( $this, 'method_meta_box' ), 'ajax_dropdown', 'side', 'default' );
-		add_meta_box( 'ajaxd_shortcodediv', __( 'Shortcode', ajax-dropdowns, array( $this, 'shortcode_meta_box' ), 'ajax_dropdown', 'side', 'default' );
+		add_meta_box( 'ajaxd_postsdiv', __( 'Posts', 'ajax-dropdowns' ), array( $this, 'posts_meta_box' ), 'ajax_dropdown', 'advanced', 'high' );
+		add_meta_box( 'ajaxd_methoddiv', __( 'Method', 'ajax-dropdowns' ), array( $this, 'method_meta_box' ), 'ajax_dropdown', 'side', 'default' );
+		add_meta_box( 'ajaxd_shortcodediv', __( 'Shortcode', 'ajax-dropdowns' ), array( $this, 'shortcode_meta_box' ), 'ajax_dropdown', 'side', 'default' );
 	}
 
 	/**
@@ -187,7 +187,7 @@ class Ajax_Dropdowns {
 		$ajax_posts = get_post_meta( $post->ID, 'ajax_post' );
 		?>
 		<p>
-			<select name="add_ajax_post" id="add_ajax_post" class="postform ajaxd-posts chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" data-placeholder="<?php _e( 'Add a post to this dropdown', ajax-dropdowns; ?>">
+			<select name="add_ajax_post" id="add_ajax_post" class="postform ajaxd-posts chosen-select<?php if ( is_rtl() ): ?> chosen-rtl<?php endif; ?>" data-placeholder="<?php _e( 'Add a post to this dropdown', 'ajax-dropdowns' ); ?>">
 				<option value=""></option>
 				<?php
 				foreach ( $post_types as $post_type ):
@@ -198,7 +198,7 @@ class Ajax_Dropdowns {
 						?>
 						<optgroup label="<?php echo $object->labels->name; ?>">
 							<?php
-							printf( '<option value="%s" data-post-type="%s">%s</option>', 0, $object->labels->singular_name, sprintf( __( '&mdash; Add All %1$s (%2$s) &mdash;', ajax-dropdowns, $object->labels->name, sizeof( $posts ) ) );
+							printf( '<option value="%s" data-post-type="%s">%s</option>', 0, $object->labels->singular_name, sprintf( __( '&mdash; Add All %1$s (%2$s) &mdash;', 'ajax-dropdowns' ), $object->labels->name, sizeof( $posts ) ) );
 							foreach ( $posts as $post ):
 								printf( '<option value="%s" data-post-type="%s">%s</option>', $post->ID, $object->labels->singular_name, $post->post_title );
 							endforeach;
@@ -214,16 +214,16 @@ class Ajax_Dropdowns {
 			<thead>
 				<tr>
 					<th style="width:1px;">&nbsp;</th>
-					<th><?php _e( 'Title', ajax-dropdowns; ?></th>
-					<th style="width:20%;"><?php _e( 'Post Type', ajax-dropdowns; ?></th>
+					<th><?php _e( 'Title', 'ajax-dropdowns' ); ?></th>
+					<th style="width:20%;"><?php _e( 'Post Type', 'ajax-dropdowns' ); ?></th>
 					<th style="width:1px;">&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="ajaxd-placeholder"<?php if ( sizeof( $ajax_posts ) ): ?> style="display:none;"<?php endif; ?>>
 					<td colspan="4">
-						<?php _e( 'No posts found.', ajax-dropdowns; ?>
-						<?php _e( 'Use the menu above to add a post to this dropdown.', ajax-dropdowns; ?>
+						<?php _e( 'No posts found.', 'ajax-dropdowns' ); ?>
+						<?php _e( 'Use the menu above to add a post to this dropdown.', 'ajax-dropdowns' ); ?>
 					</td>
 				</tr>
 				<?php if ( sizeof( $ajax_posts ) ): foreach ( $ajax_posts as $post_id ): ?>
@@ -237,11 +237,11 @@ class Ajax_Dropdowns {
 			</tbody>
 		</table>
 		<p class="howto">
-			<?php _e( 'Drag and drop to reorder posts.', ajax-dropdowns; ?>
+			<?php _e( 'Drag and drop to reorder posts.', 'ajax-dropdowns' ); ?>
 		</p>
 		<p>
 			<a href="http://wordpress.org/support/view/plugin-reviews/ajax-dropdowns?rate=5#postform">
-				<?php _e( 'Love Ajax Dropdowns? Help spread the word by rating us 5★ on WordPress.org', ajax-dropdowns; ?>
+				<?php _e( 'Love Ajax Dropdowns? Help spread the word by rating us 5★ on WordPress.org', 'ajax-dropdowns' ); ?>
 			</a>
 		</p>
 		<?php
@@ -253,7 +253,7 @@ class Ajax_Dropdowns {
 	public static function shortcode_meta_box( $post ) {
 		?>
 		<p class="howto">
-			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', ajax-dropdowns; ?>
+			<?php _e( 'Copy this code and paste it into your post, page or text widget content.', 'ajax-dropdowns' ); ?>
 		</p>
 		<p><input type="text" value="[ajax_dropdown <?php echo $post->ID; ?>]" readonly="readonly" class="code"></p>
 		<?php
@@ -266,10 +266,10 @@ class Ajax_Dropdowns {
 		wp_nonce_field( 'ajaxd_save_data', 'ajaxd_meta_nonce' );
 		$method = get_post_meta( $post->ID, 'ajaxd_method', true );
 		$no_content = get_post_meta( $post->ID, 'ajaxd_no_content', true ) == 'yes' ? true : false;
-		$method_options = array( 'ajax' => __( 'Ajax', ajax-dropdowns, 'inline' => __( 'Inline', ajax-dropdowns, 'parameter' => __( 'URL Parameter', ajax-dropdowns, 'redirect' => __( 'Redirect', ajax-dropdowns );
+		$method_options = array( 'ajax' => __( 'Ajax', 'ajax-dropdowns' ), 'inline' => __( 'Inline', 'ajax-dropdowns' ), 'parameter' => __( 'URL Parameter', 'ajax-dropdowns' ), 'redirect' => __( 'Redirect', 'ajax-dropdowns' ) );
 		?>
 		<p class="howto">
-			<?php _e( 'Select the method to query posts.', ajax-dropdowns; ?>
+			<?php _e( 'Select the method to query posts.', 'ajax-dropdowns' ); ?>
 		</p>
 		<p>
 			<select name="ajaxd_method" id="ajaxd_method" class="postform ajaxd-method widefat">
@@ -284,7 +284,7 @@ class Ajax_Dropdowns {
 			<label>
 				<input type="hidden" name="ajaxd_no_content" value="no">
 				<input type="checkbox" name="ajaxd_no_content" class="ajaxd-no-content" value="yes" <?php checked( $no_content ); ?>>
-				<?php _e( 'Dropdown only (no content)', ajax-dropdowns; ?>
+				<?php _e( 'Dropdown only (no content)', 'ajax-dropdowns' ); ?>
 			</label>
 		</p>
 		<?php
@@ -329,7 +329,7 @@ class Ajax_Dropdowns {
 
 		if ( 'ajax_dropdown' == $typenow ):
 			for ( $i = 0; $i <= 10; $i++ ):
-				$messages['post'][ $i ] = '<strong>' . __( 'Settings saved.', ajax-dropdowns . '</strong>';
+				$messages['post'][ $i ] = '<strong>' . __( 'Settings saved.', 'ajax-dropdowns' ) . '</strong>';
 			endfor;
 		endif;
 
