@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Ajax_Dropdowns
- * @version 0.9.6
+ * @version 0.9.7
  */
 /*
 Plugin Name: Ajax Dropdowns
 Plugin URI: http://wordpress.org/plugins/ajax-dropdowns/
 Description: Display a group of posts that can be switched using dropdowns.
 Author: ThemeBoy
-Version: 0.9.6
+Version: 0.9.7
 Author URI: http://themeboy.com/
 */
 
@@ -44,6 +44,7 @@ class Ajax_Dropdowns {
 		add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
 		add_action( 'wp_ajax_ajax_dropdown', array( $this, 'ajax_callback' ) );
 		add_action( 'wp_ajax_nopriv_ajax_dropdown', array( $this, 'ajax_callback' ) );
+		add_filter( 'widget_text', array( $this, 'widget_text' ) );
 	}
 
 	/**
@@ -51,7 +52,7 @@ class Ajax_Dropdowns {
 	*/
 	private function define_constants() {
 		if ( !defined( 'AJAX_DROPDOWNS_VERSION' ) )
-			define( 'AJAX_DROPDOWNS_VERSION', '0.9.6' );
+			define( 'AJAX_DROPDOWNS_VERSION', '0.9.7' );
 
 		if ( !defined( 'AJAX_DROPDOWNS_URL' ) )
 			define( 'AJAX_DROPDOWNS_URL', plugin_dir_url( __FILE__ ) );
@@ -451,6 +452,18 @@ class Ajax_Dropdowns {
 		endwhile;
 
 		die();
+	}
+
+	/**
+	 * Do shortcode in widgets
+	 */
+	public static function widget_text( $content ) {
+		if ( ! preg_match( '/\[[\r\n\t ]*(ajax_dropdown)?[\r\n\t ].*?\]/', $content ) )
+			return $content;
+
+		$content = do_shortcode( $content );
+
+		return $content;
 	}
 
 }
