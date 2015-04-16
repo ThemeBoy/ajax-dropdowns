@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Ajax_Dropdowns
- * @version 0.9.7
+ * @version 0.9.8
  */
 /*
 Plugin Name: Ajax Dropdowns
 Plugin URI: http://wordpress.org/plugins/ajax-dropdowns/
 Description: Display a group of posts that can be switched using dropdowns.
 Author: ThemeBoy
-Version: 0.9.7
+Version: 0.9.8
 Author URI: http://themeboy.com/
 */
 
@@ -52,7 +52,7 @@ class Ajax_Dropdowns {
 	*/
 	private function define_constants() {
 		if ( !defined( 'AJAX_DROPDOWNS_VERSION' ) )
-			define( 'AJAX_DROPDOWNS_VERSION', '0.9.7' );
+			define( 'AJAX_DROPDOWNS_VERSION', '0.9.8' );
 
 		if ( !defined( 'AJAX_DROPDOWNS_URL' ) )
 			define( 'AJAX_DROPDOWNS_URL', plugin_dir_url( __FILE__ ) );
@@ -380,7 +380,7 @@ class Ajax_Dropdowns {
 		elseif ( 'redirect' == $method ):
 			$script = '$("#ajaxd-select-' . $id . '").change(function(){window.location=$(this).find("option:selected").data("permalink");});';
 		else:
-			$script = '$("#ajaxd-select-' . $id . '").change(function(){$.post("' . admin_url('admin-ajax.php') . '",{"action":"ajax_dropdown","post_id":$(this).val()},function(response){if(response!=0){$("#ajaxd-posts-' . $id . '").html(response)};});});';
+			$script = '$("#ajaxd-select-' . $id . '").change(function(){$.post("' . admin_url('admin-ajax.php') . '",{"action":"ajax_dropdown","post_id":$(this).val()},function(response){if(response!=0){$("#ajaxd-posts-' . $id . '").html(response)};});}).trigger("change");';
 		endif;
 
 		// Skip if no content
