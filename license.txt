@@ -1,6 +1,6 @@
 Ajax Dropdowns
 
-Copyright 2014 by the contributors
+Copyright 2016 by the contributors
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ permission notices:
 
 and
 
-  ThemeBoy
+  Brian Miyaji
 
   Ajax Dropdowns is released under the GPL
 

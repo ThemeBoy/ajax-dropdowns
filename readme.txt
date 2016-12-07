@@ -1,8 +1,8 @@
 === Ajax Dropdowns ===
-Contributors: ThemeBoy, brianmiyaji
+Contributors: brianmiyaji
 Tags: ajax, dropdowns, option, posts, pages, custom post types, tabs, groups, redirect, inline
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.7
 Stable tag: 0.9.8
 License: GPLv2 or later
 
