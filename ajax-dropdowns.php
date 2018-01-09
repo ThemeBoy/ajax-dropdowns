@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Ajax_Dropdowns
- * @version 0.9.8
+ * @version 0.9.9
  */
 /*
 Plugin Name: Ajax Dropdowns
 Plugin URI: http://wordpress.org/plugins/ajax-dropdowns/
 Description: Display a group of posts that can be switched using dropdowns.
 Author: Brian Miyaji
-Version: 0.9.8
+Version: 0.9.9
 Author URI: http://themeboy.com/
 */
 
@@ -52,7 +52,7 @@ class Ajax_Dropdowns {
 	*/
 	private function define_constants() {
 		if ( !defined( 'AJAX_DROPDOWNS_VERSION' ) )
-			define( 'AJAX_DROPDOWNS_VERSION', '0.9.8' );
+			define( 'AJAX_DROPDOWNS_VERSION', '0.9.9' );
 
 		if ( !defined( 'AJAX_DROPDOWNS_URL' ) )
 			define( 'AJAX_DROPDOWNS_URL', plugin_dir_url( __FILE__ ) );
@@ -369,7 +369,7 @@ class Ajax_Dropdowns {
 			$select .= '<option value="' . $post_id . '" data-permalink="' . get_permalink( $post_id ) . '" ' . selected( $current, $post_id, false ) . '>' . get_the_title( $post_id ) . '</option>';
 		endif; endforeach;
 		$select .= '</select>';
-		
+
 		/**
 		 * Select script (defaults to ajax)
 		 */
@@ -450,6 +450,9 @@ class Ajax_Dropdowns {
 			echo '<div class="ajaxd-post" id="ajaxd-post-' . $post_id . '">' . apply_filters( 'the_content', get_the_content() ) . '</div>';
 
 		endwhile;
+
+		// Add callback hook to play well with others
+		do_action('ajax_dropdowns_callback');
 
 		die();
 	}
