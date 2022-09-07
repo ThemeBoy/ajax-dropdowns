@@ -1,5 +1,5 @@
 === Ajax Dropdowns ===
-Contributors: brianmiyaji
+Contributors: brianmiyaji, KoolPal
 Tags: ajax, dropdowns, option, posts, pages, custom post types, tabs, groups, redirect, inline
 Requires at least: 3.0
 Tested up to: 4.7
@@ -22,7 +22,7 @@ Add content from multiple post types on one page with a dropdown to switch betwe
 
 = Get Involved =
 
-Developers can contribute via the [Ajax Dropdowns GitHub Repository](https://github.com/ThemeBoy/ajax-dropdowns).
+Developers can contribute via the [Ajax Dropdowns GitHub Repository](https://github.com/KoolPal/ajax-dropdowns).
 
 Translators can contribute new languages to Ajax Dropdowns and our other WordPress plugins through [Transifex](https://www.transifex.com/projects/p/wp-plugins/).
 
@@ -61,6 +61,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 6. A dropdown is displayed on the frontend to swap the content below it.
 
 == Changelog ==
+
+= 0.9.9 - KoolPal =
+* Update - Updated Script with latest version 1.8.7 from https://cdnjs.com/libraries/chosen
 
 = 0.9.8 =
 * Fix - Automatically display content of first option in widget.

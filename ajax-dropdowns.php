@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Ajax_Dropdowns
- * @version 0.9.8
+ * @version 0.9.9
  */
 /*
 Plugin Name: Ajax Dropdowns
 Plugin URI: http://wordpress.org/plugins/ajax-dropdowns/
 Description: Display a group of posts that can be switched using dropdowns.
 Author: Brian Miyaji
-Version: 0.9.8
+Version: 0.9.9
 Author URI: http://themeboy.com/
 */
 
